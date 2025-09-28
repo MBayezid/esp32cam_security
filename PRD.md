@@ -66,7 +66,7 @@ The ESP32-CAM Smart Camera is a low-cost, open-source project designed for home 
 
 * **Microcontroller:** ESP32-CAM module (ESP32-S or ESP32-D series, with 4MB PSRAM recommended for streaming).  
 * **Camera Module:** OV2640 (default, 2MP).  
-* **Connectivity:** Wi-Fi 802.11 b/g/n.  
+* **Connectivity:** Wi-Fi 802.11 b/g/n + BT.  
 * **Power:** 5V DC via USB-C or dedicated 5V pin.  
 * **Live Stream Frame Rate:** Target a minimum of 5 FPS for smooth viewing, aiming for higher where network conditions allow.  
 * **Image Resolution:**  
