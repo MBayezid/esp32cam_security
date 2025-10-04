@@ -142,6 +142,23 @@ void handleStream() {
   }
 }
 
+unsigned long lastReconnectAttempt = 0;
+
+void checkWiFiReconnect() {
+  if (WiFi.status() != WL_CONNECTED) {
+    unsigned long now = millis();
+    if (now - lastReconnectAttempt > 3000) {  // when not connected scan/try reconnect between each 3 secs delay
+      Serial.println("WiFi disconnected. Attempting reconnection...");
+      WiFi.disconnect();
+      // Serial.println(WiFi.scanNetworks()); // print visible SSID nearby
+      WiFi.begin(WIFI_SSID, WIFI_PASS);
+      lastReconnectAttempt = now;
+    }
+  }
+}
+
+
+
 void setup() {
   Serial.begin(115200);
   Serial.println();
@@ -182,11 +199,6 @@ void setup() {
 
 void loop() {
   server.handleClient();
-}
+  checkWiFiReconnect(); //need improvment :([built in functions could be helpfull]
 
-/*
-For now dont have any constructive approch to handle:
-*regain WIFI conn.
-*changing SSID/PASS
-[]
-*/
+}
