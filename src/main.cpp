@@ -2,18 +2,20 @@
 // ESP32-CAM wireless MJPEG stream example for PlatformIO (AI-Thinker pinout)
 // Replace WIFI_SSID and WIFI_PASS with your network credentials.
 
+#include "secrets.h"
+
 #include <WiFi.h>
 #include "esp_camera.h"
 #include <WebServer.h>
 
 // --------- Replace with your WiFi credentials ----------
-const char* WIFI_SSID = "MB";
-const char* WIFI_PASS = "mayesha2k10";
+// const char* WIFI_SSID = "YOUR_WIFI_SSID";
+// const char* WIFI_PASS = "YOUR_WIFI_PASS";
 // ------------------------------------------------------
 
 WebServer server(80);
 
-// --------- AI-Thinker (ESP32-CAM) default pins ----------
+// --------- AI-Thinker/ESP-32S(China ver) (ESP32-CAM) default pins ----------
 #define PWDN_GPIO_NUM 32
 #define RESET_GPIO_NUM -1
 #define XCLK_GPIO_NUM 0
@@ -106,18 +108,21 @@ void handleCapture() {
   esp_camera_fb_return(fb);
 }
 
-// Stream MJPEG: multipart/x-mixed-replace
+
 void handleStream() {
+  // Stream MJPEG: multipart/x-mixed-replace
   WiFiClient client = server.client();
   String response = "HTTP/1.1 200 OK\r\n";
   response += "Content-Type: multipart/x-mixed-replace; boundary=frame\r\n\r\n";
+
   // server.streamFile(nullptr, ""); // no-op to ensure headers are flushed via server
+  // Dont need any reagular header Follow aboveLine 
   client.print(response);
 
   while (true) {
     camera_fb_t * fb = esp_camera_fb_get();
     if (!fb) {
-      Serial.println("Camera capture failed");
+      Serial.println("Camera capture failed!!");
       delay(100);
       continue;
     }
@@ -178,3 +183,10 @@ void setup() {
 void loop() {
   server.handleClient();
 }
+
+/*
+For now dont have any constructive approch to handle:
+*regain WIFI conn.
+*changing SSID/PASS
+[]
+*/
