@@ -9,9 +9,9 @@
 
 ## 🚀 Features (v1.0.0)
 - 📡 Local Wi-Fi connectivity (SSID/Password via code)
-- 🎥 HTTP-based MJPEG live stream (accessible in browser)
+- 🎥 HTTP-based MJPEG live stream (accessible in browser 10-15 fps on SVGA)
 - 📸 Snapshot button on web interface
-- ⚡ Lightweight web server on ESP32
+- ⚡ Lightweight web server on ESP32S
 
 ## 🔧 Hardware Required
 - ESP32-CAM module
