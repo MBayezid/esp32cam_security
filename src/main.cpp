@@ -145,7 +145,9 @@ void handleStream() {
 void setup() {
   Serial.begin(115200);
   Serial.println();
+  delay(1000); // give some time for Serial to initialize
   Serial.println("Starting ESP32-CAM Web Server");
+  delay(1000); // small delay before starting camera and WiFi
 
   // Init camera
   initCamera();

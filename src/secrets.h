@@ -6,8 +6,12 @@
 #ifndef SECRETS_H
 #define SECRETS_H
 
-#define WIFI_SSID "MB"
 
-#define WIFI_PASS "mayesha2k10"
+// #define WIFI_SSID "git.io"
+
+// #define WIFI_PASS "19201203065"
+
+#define WIFI_SSID "MB"
+#define WIFI_PASS "mayesha2k10" 
 
 #endif
